@@ -2,33 +2,21 @@ Resources:
   UserDataInstance:
     Type: "AWS::EC2::Instance"
     Properties:
-      ImageId: 'ami-0e2ff28bfb72a4e45'
+      ImageId: 'ami-062f7200baf2fa504'
       KeyName: 'ec2BenKeyPair'
       UserData: 
-        Fn::Base64:
+        Fn::Base64: 
+          !Sub |
           #!/bin/bash
-          sudo yum -y update /n
-          sudo yum -y upgrade /n
-          sudo yum -y install git /n
-          sudo yum -y install awslogsd /n
-          sudo systemctl start awslogsd /n
-          cd ~ /n
-          curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash /n
-          ~/.nvm/nvm.shnvm install 10.18 /n
-          git clone https://github.com/xDOASx/aws_s3_ec2.git /n
-          cd aws_s3_ec2 /n
-          npm -y i /n
-          npm update -y /n
-          # npm install httpd -y /n
-          # service httpd start /n
-      MyInstanceProfile: 
-        Type: "AWS::IAM::InstanceProfile"
-        Properties: 
-          Arn: 'arn:aws:iam::825930416745:role/s3access'
-          Path: "/"
-          Roles: 
-            - 
-              Ref: "s3access"
-      # IamInstanceProfile:
-      #   Arn: 'arn:aws:iam::825930416745:role/s3access'
-      #   Name: 's3access'
+          yum -y update;
+          yum -y upgrade;
+          yum -y install git;
+          yum -y install awslogsd;
+          systemctl start awslogsd;
+          cd ;
+          curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash;
+          ~/.nvm/nvm.sh nvm install 10.18;
+          git clone https://github.com/xDOASx/aws_s3_ec2.git;
+          cd aws_s3_ec2;
+          npm -y i;
+          npm update -y;
