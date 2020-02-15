@@ -24,4 +24,9 @@ def upload_to_aws(local_file, s3_file):
         return False
 
 
-uploaded = upload_to_aws('local_file', 's3_file_name')
+# uploaded = upload_to_aws('local_file', 's3_file_name')
+
+def main():
+    print('Hello World')
+
+main()
