@@ -1,2 +1,5 @@
 # Secret Stuffs
 *.pem
+
+# Local env
+get-pip.py
