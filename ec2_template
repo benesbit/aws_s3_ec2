@@ -3,10 +3,6 @@ Resources:
     Type: "AWS::EC2::Instance"
     Properties:
       ImageId: 'ami-0e2ff28bfb72a4e45'
-      LaunchTemplate:
-        LaunchTemplateId: 'i-0f74d045343b0de0f'
-        LaunchTemplateName: 'Nesbit_EC2_Instance'
-        Version: '2-15-2020'
       UserData: 
         Fn::Base64:
           #!/bin/bash
