@@ -7,3 +7,21 @@ get-pip.py
 
 # ec2 stuff
 ec2_view/node_modules
+
+# Vue
+node_modules
+ec2_view/.DS_Store
+ec2_view/node_modules
+ec2_view/node_modules/
+ec2_view/node_modules/*
+ec2_view/../node_modules/
+ec2_view//dist
+
+# local env files
+ec2_view/.env.local
+ec2_view/.env.*.local
+
+# Log files
+ec2_view/npm-debug.log*
+ec2_view/yarn-debug.log*
+ec2_view/yarn-error.log*
