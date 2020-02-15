@@ -1,29 +1,27 @@
-import logging
 import boto3
-from botocore.exceptions import ClientError
+from botocore.exceptions import NoCredentialsError
 
-BUCKET_NAME = "nesbit-music-app"
-BUCKET_REGION = "us-east-1"
+keys_file = open('./rootkey.csv')
+lines = keys_file.readlines()
+ACCESS_KEY = lines[0].rstrip()
+SECRET_KEY = lines[1].rstrip()
+BUCKET = "nesbit-music-app"
 
-def upload_file(file_name, object_name=None):
-    """Upload a file to an S3 bucket
 
-    :param file_name: File to upload
-    :param bucket: Bucket to upload to
-    :param object_name: S3 object name. If not specified then file_name is used
-    :return: True if file was uploaded, else False
-    """
+def upload_to_aws(local_file, s3_file):
+    s3 = boto3.client('s3', aws_access_key_id=ACCESS_KEY,
+                      aws_secret_access_key=SECRET_KEY)
 
-    # If S3 object_name was not specified, use file_name
-    if object_name is None:
-        object_name = file_name
-
-    # Upload the file
-    s3_client = boto3.client('s3')
     try:
-        response = s3_client.upload_file(file_name, BUCKET_NAME, object_name)
-        logging.debug(response)
-    except ClientError as e:
-        logging.error(e)
+        s3.upload_file(local_file, BUCKET, s3_file)
+        print("Upload Successful")
+        return True
+    except FileNotFoundError:
+        print("The file was not found")
         return False
-    return True
+    except NoCredentialsError:
+        print("Credentials not available")
+        return False
+
+
+uploaded = upload_to_aws('local_file', 's3_file_name')
