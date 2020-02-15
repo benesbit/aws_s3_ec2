@@ -21,6 +21,14 @@ Resources:
           npm update -y /n
           # npm install httpd -y /n
           # service httpd start /n
-      IamInstanceProfile: 
-        Arn: 'arn:aws:iam::825930416745:role/s3access'
-        Name: 's3access'
+      MyInstanceProfile: 
+        Type: "AWS::IAM::InstanceProfile"
+        Properties: 
+          Arn: 'arn:aws:iam::825930416745:role/s3access'
+          Path: "/"
+          Roles: 
+            - 
+              Ref: "s3access"
+      # IamInstanceProfile:
+      #   Arn: 'arn:aws:iam::825930416745:role/s3access'
+      #   Name: 's3access'
