@@ -1,5 +1,6 @@
 # Secret Stuffs
 *.pem
+*.csv
 
 # Local env
 get-pip.py
