@@ -3,9 +3,12 @@ Resources:
     Type: "AWS::EC2::Instance"
     Properties:
       ImageId: 'ami-0e2ff28bfb72a4e45'
+      KeyName: 'ec2BenKeyPair'
       UserData: 
         Fn::Base64:
           #!/bin/bash
+          sudo yum update -y /n
+          sudo yum upgrade -y /n
           npm update -y /n
           npm install httpd -y /n
           service httpd start /n
