@@ -7,8 +7,17 @@ Resources:
       UserData: 
         Fn::Base64:
           #!/bin/bash
-          sudo yum update -y /n
-          sudo yum upgrade -y /n
+          sudo yum -y update /n
+          sudo yum -y upgrade /n
+          sudo yum -y install git /n
+          sudo yum -y install awslogsd /n
+          sudo systemctl start awslogsd /n
+          cd ~ /n
+          curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash /n
+          ~/.nvm/nvm.shnvm install 10.18 /n
+          git clone https://github.com/xDOASx/aws_s3_ec2.git /n
+          cd aws_s3_ec2 /n
+          npm -y i /n
           npm update -y /n
-          npm install httpd -y /n
-          service httpd start /n
+          # npm install httpd -y /n
+          # service httpd start /n
