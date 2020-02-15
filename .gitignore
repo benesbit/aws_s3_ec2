@@ -6,4 +6,4 @@
 get-pip.py
 
 # ec2 stuff
-ec2_view/node*
+ec2_view/node_modules
