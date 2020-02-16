@@ -5,6 +5,9 @@
                 <p>Album: {{ AlbumName }}</p>
                 <div v-for="(elm, index) in SongList" v-bind:key="index">
                     <Songs :SongName="index"/>
+                    <audio controls>
+                        <source v-bind:src="elm" type="audio/mpeg">
+                    </audio>
                 </div>
             </div>
         </div>
