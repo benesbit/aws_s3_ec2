@@ -1,14 +1,24 @@
 <template>
   <div class="hello">
-    
+    <div class="columns">
+      <div class="column is-4 is-offset-4">
+        <div v-for="(elm, index) in this.data" v-bind:key="index">
+          <Artists :ArtistName="index" :AlbumSongs="elm"/>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios"
+import Artists from './Artists'
 
 export default {
   name: 'HelloWorld',
+  components: {
+    Artists
+  },
   data() {
     return {
       data: {}
