@@ -4,7 +4,7 @@
         <div class="columns">
             <div class="column is-4 is-offset-4">
                 <div v-for="(elm, index) in AlbumSongs" v-bind:key="index">
-                    <Albums :AlbumName="index" :Songs="elm"/>
+                    <Albums :AlbumName="index" :SongList="elm"/>
                 </div>
             </div>
         </div>

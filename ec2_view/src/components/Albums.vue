@@ -3,8 +3,8 @@
         <p>{{ AlbumName }}</p>
         <div class="columns">
             <div class="column is-4 is-offset-4">
-                <div v-for="(elm, index) in Songs" v-bind:key="index">
-                    <!-- <Albums :AlbumName="index" :Songs="elm"/> -->
+                <div v-for="(elm, index) in SongList" v-bind:key="index">
+                    <Songs :SongName="index"/>
                 </div>
             </div>
         </div>
@@ -12,9 +12,14 @@
 </template>
 
 <script>
+import Songs from './Songs'
+
 export default {
+    components: {
+        Songs
+    },
     props: ['AlbumName',
-            'Songs']
+            'SongList']
 }
 </script>
 
