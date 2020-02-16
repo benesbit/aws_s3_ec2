@@ -1,7 +1,6 @@
 <template>
   <div class="hello">
     
-
   </div>
 </template>
 
@@ -10,11 +9,19 @@ import axios from "axios"
 
 export default {
   name: 'HelloWorld',
+  data() {
+    return {
+      data: {}
+    }
+  },
   mounted() {
     axios
       .get('http://localhost:3000/shit')
-      .then(response => (console.log(response)));
-  }
+      .then(response => {
+        console.log(response.data);
+        this.data = response.data;
+      });
+  },
 }
 </script>
 
