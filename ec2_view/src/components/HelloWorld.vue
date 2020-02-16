@@ -1,10 +1,14 @@
 <template>
   <div class="hello">
-    <div class="columns">
-      <div class="column is-4 is-offset-4">
-        <div v-for="(elm, index) in this.data" v-bind:key="index">
-          <Artists :ArtistName="index" :AlbumSongs="elm"/>
-        </div>
+    <div class="card">
+      <div class="card-content">
+        <!-- <div class="columns">
+          <div class="column is-4 is-offset-4"> -->
+            <div v-for="(elm, index) in this.data" v-bind:key="index">
+              <Artists :ArtistName="index" :AlbumSongs="elm"/>
+            </div>
+          <!-- </div>
+        </div> -->
       </div>
     </div>
   </div>

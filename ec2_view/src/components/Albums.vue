@@ -1,8 +1,8 @@
 <template>
-    <div>
-        <p>{{ AlbumName }}</p>
-        <div class="columns">
-            <div class="column is-4 is-offset-4">
+    <div class="Album">
+        <div class="card">
+            <div class="card-content">
+                <p>Album: {{ AlbumName }}</p>
                 <div v-for="(elm, index) in SongList" v-bind:key="index">
                     <Songs :SongName="index"/>
                 </div>
