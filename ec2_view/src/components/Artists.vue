@@ -3,8 +3,8 @@
         <div class="card">
             <div class="card-content">
                <p>Artist: {{ ArtistName }}</p>
-                <div v-for="(elm, index) in AlbumSongs" v-bind:key="index">
-                    <Albums :AlbumName="index" :SongList="elm"/>
+                <div v-for="(listOfSongs, album) in AlbumSongs" v-bind:key="album">
+                    <Albums :AlbumName="album" :SongList="listOfSongs"/>
                 </div>
             </div>
         </div>
