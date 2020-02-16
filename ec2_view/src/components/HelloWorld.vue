@@ -2,13 +2,9 @@
   <div class="hello">
     <div class="card">
       <div class="card-content">
-        <!-- <div class="columns">
-          <div class="column is-4 is-offset-4"> -->
-            <div v-for="(elm, index) in this.data" v-bind:key="index">
-              <Artists :ArtistName="index" :AlbumSongs="elm"/>
-            </div>
-          <!-- </div>
-        </div> -->
+        <div v-for="(albumSongs, artist) in this.data" v-bind:key="artist">
+          <Artists :ArtistName="artist" :AlbumSongs="albumSongs"/>
+        </div>
       </div>
     </div>
   </div>
@@ -30,7 +26,7 @@ export default {
   },
   mounted() {
     axios
-      .get('http://ec2-54-83-120-223.compute-1.amazonaws.com:3000')
+      .get('http://ec2-54-83-120-223.compute-1.amazonaws.com:3000/shit')
       .then(response => {
         console.log(response.data);
         this.data = response.data;
