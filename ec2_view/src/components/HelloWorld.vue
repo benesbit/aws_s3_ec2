@@ -30,7 +30,7 @@ export default {
   },
   mounted() {
     axios
-      .get('ec2-54-83-120-223.compute-1.amazonaws.com:3000')
+      .get('http://ec2-54-83-120-223.compute-1.amazonaws.com:3000')
       .then(response => {
         console.log(response.data);
         this.data = response.data;
