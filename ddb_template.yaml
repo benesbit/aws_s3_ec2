@@ -1,36 +1,63 @@
 Resources:
-  DDBTable:
+  myDynamoDBTable:
     Type: AWS::DynamoDB::Table
     Properties:
+      TableName: "music"
       AttributeDefinitions:
         -
-          AttributeName: "ArtistId"
+          AttributeName: "Genre"
           AttributeType: "S"
         -
-          AttributeName: "Concert"
+          AttributeName: "Artist"
           AttributeType: "S"
         -
-          AttributeName: "TicketSales"
+          AttributeName: "Album"
+          AttributeType: "S"
+        -
+          AttributeName: "Song"
           AttributeType: "S"
       KeySchema:
         -
-          AttributeName: "ArtistId"
+          AttributeName: "Genre"
           KeyType: "HASH"
         -
-          AttributeName: "Concert"
+          AttributeName: "Artist"
           KeyType: "RANGE"
-      GlobalSecondaryIndexes:
-        -
-          IndexName: "GSI"
-          KeySchema:
-            -
-              AttributeName: "TicketSales"
+      GlobalSecondaryIndexes: 
+        - 
+          IndexName: "myGSI"
+          KeySchema: 
+            - 
+              AttributeName: "Album"
               KeyType: "HASH"
-          Projection:
-            ProjectionType: "KEYS_ONLY"
-          ProvisionedThroughput:
-            ReadCapacityUnits: 5
-            WriteCapacityUnits: 5
+            - 
+              AttributeName: "Artist"
+              KeyType: "RANGE"
+          Projection: 
+            NonKeyAttributes: 
+              - "Genre"
+              - "Song"
+            ProjectionType: "INCLUDE"
+          ProvisionedThroughput: 
+            ReadCapacityUnits: "5"
+            WriteCapacityUnits: "5"
+        -
+          IndexName: "myGSI2"
+          KeySchema: 
+            - 
+              AttributeName: "Song"
+              KeyType: "HASH"
+            - 
+              AttributeName: "Album"
+              KeyType: "RANGE"
+          Projection: 
+            NonKeyAttributes: 
+              - "Genre"
+              - "Artist"
+            ProjectionType: "INCLUDE"
+          ProvisionedThroughput: 
+            ReadCapacityUnits: "5"
+            WriteCapacityUnits: "5"
       ProvisionedThroughput:
         ReadCapacityUnits: 5
         WriteCapacityUnits: 5
