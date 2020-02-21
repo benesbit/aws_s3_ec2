@@ -5,33 +5,33 @@ Resources:
       TableName: "music"
       AttributeDefinitions:
         -
-          AttributeName: "Genre"
-          AttributeType: "S"
-        -
-          AttributeName: "Artist"
+          AttributeName: "Song"
           AttributeType: "S"
         -
           AttributeName: "Album"
           AttributeType: "S"
         -
-          AttributeName: "Song"
+          AttributeName: "Artist"
+          AttributeType: "S"
+        -
+          AttributeName: "Genre"
           AttributeType: "S"
       KeySchema:
         -
-          AttributeName: "Genre"
+          AttributeName: "Song"
           KeyType: "HASH"
         -
-          AttributeName: "Artist"
+          AttributeName: "Album"
           KeyType: "RANGE"
       GlobalSecondaryIndexes: 
         - 
           IndexName: "myGSI"
           KeySchema: 
             - 
-              AttributeName: "Artist"
+              AttributeName: "Album"
               KeyType: "HASH"
             - 
-              AttributeName: "Album"
+              AttributeName: "Artist"
               KeyType: "RANGE"
           Projection: 
             NonKeyAttributes: 
@@ -45,10 +45,10 @@ Resources:
           IndexName: "myGSI2"
           KeySchema: 
             - 
-              AttributeName: "Album"
+              AttributeName: "Artist"
               KeyType: "HASH"
             - 
-              AttributeName: "Song"
+              AttributeName: "Genre"
               KeyType: "RANGE"
           Projection: 
             NonKeyAttributes: 
