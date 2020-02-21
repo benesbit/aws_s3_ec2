@@ -1,0 +1,63 @@
+Resources:
+  myDynamoDBTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: "music"
+      AttributeDefinitions:
+        -
+          AttributeName: "Genre"
+          AttributeType: "S"
+        -
+          AttributeName: "Artist"
+          AttributeType: "S"
+        -
+          AttributeName: "Album"
+          AttributeType: "S"
+        -
+          AttributeName: "Song"
+          AttributeType: "S"
+      KeySchema:
+        -
+          AttributeName: "Genre"
+          KeyType: "HASH"
+        -
+          AttributeName: "Artist"
+          KeyType: "RANGE"
+      GlobalSecondaryIndexes: 
+        - 
+          IndexName: "myGSI"
+          KeySchema: 
+            - 
+              AttributeName: "Artist"
+              KeyType: "HASH"
+            - 
+              AttributeName: "Album"
+              KeyType: "RANGE"
+          Projection: 
+            NonKeyAttributes: 
+              - "Genre"
+              - "Song"
+            ProjectionType: "INCLUDE"
+          ProvisionedThroughput: 
+            ReadCapacityUnits: "5"
+            WriteCapacityUnits: "5"
+        -
+          IndexName: "myGSI2"
+          KeySchema: 
+            - 
+              AttributeName: "Album"
+              KeyType: "HASH"
+            - 
+              AttributeName: "Song"
+              KeyType: "RANGE"
+          Projection: 
+            NonKeyAttributes: 
+              - "Genre"
+              - "Artist"
+            ProjectionType: "INCLUDE"
+          ProvisionedThroughput: 
+            ReadCapacityUnits: "5"
+            WriteCapacityUnits: "5"
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
