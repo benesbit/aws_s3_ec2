@@ -26,7 +26,11 @@ export default {
   },
   mounted() {
     axios
-      .get('http://ec2-54-83-120-223.compute-1.amazonaws.com:3000/listEverything')
+      // .get('http://ec2-54-83-120-223.compute-1.amazonaws.com:3000/listEverything')
+      // .get('http://localhost:3000/genres')
+      // .get('http://localhost:3000/artists/for/genre?genre=Rock')
+      // .get('http://localhost:3000/albums/for/artist?artist=Cake')
+      .get('http://localhost:3000/songs/for/album?album=Dude%20Ranch')
       .then(response => {
         console.log(response.data);
         this.data = response.data;
