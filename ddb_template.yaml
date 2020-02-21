@@ -5,59 +5,19 @@ Resources:
       TableName: "music"
       AttributeDefinitions:
         -
-          AttributeName: "Genre"
+          AttributeName: "PK"
           AttributeType: "S"
         -
-          AttributeName: "Artist"
+          AttributeName: "SK"
           AttributeType: "S"
         -
-          AttributeName: "Album"
-          AttributeType: "S"
-        -
-          AttributeName: "Song"
-          AttributeType: "S"
       KeySchema:
         -
-          AttributeName: "Genre"
+          AttributeName: "PK"
           KeyType: "HASH"
         -
-          AttributeName: "Artist"
+          AttributeName: "SK"
           KeyType: "RANGE"
-      GlobalSecondaryIndexes: 
-        - 
-          IndexName: "myGSI"
-          KeySchema: 
-            - 
-              AttributeName: "Artist"
-              KeyType: "HASH"
-            - 
-              AttributeName: "Album"
-              KeyType: "RANGE"
-          Projection: 
-            NonKeyAttributes: 
-              - "Genre"
-              - "Song"
-            ProjectionType: "INCLUDE"
-          ProvisionedThroughput: 
-            ReadCapacityUnits: "5"
-            WriteCapacityUnits: "5"
-        -
-          IndexName: "myGSI2"
-          KeySchema: 
-            - 
-              AttributeName: "Album"
-              KeyType: "HASH"
-            - 
-              AttributeName: "Song"
-              KeyType: "RANGE"
-          Projection: 
-            NonKeyAttributes: 
-              - "Genre"
-              - "Artist"
-            ProjectionType: "INCLUDE"
-          ProvisionedThroughput: 
-            ReadCapacityUnits: "5"
-            WriteCapacityUnits: "5"
       ProvisionedThroughput:
         ReadCapacityUnits: 5
         WriteCapacityUnits: 5
