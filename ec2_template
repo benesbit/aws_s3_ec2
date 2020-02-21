@@ -4,6 +4,7 @@ Resources:
     Properties:
       ImageId: 'ami-062f7200baf2fa504'
       KeyName: 'ec2BenKeyPair'
+      InstanceType: 't2.micro'
       UserData: 
         Fn::Base64: 
           !Sub |
