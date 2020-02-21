@@ -10,7 +10,6 @@ Resources:
         -
           AttributeName: "SK"
           AttributeType: "S"
-        -
       KeySchema:
         -
           AttributeName: "PK"
