@@ -2,7 +2,7 @@
   <div class="hello">
     <div class="card">
       <div class="card-content">
-        <form id="upload-to-db">
+        <form id="upload-to-db" @submit="addToDynamo">
           Upload new entry into DynamoDB
           <br>
           <p>
@@ -48,7 +48,40 @@ export default {
   },
   data() {
     return {
-      data: {}
+      data: {
+        genre: null,
+        artist: null,
+        album: null,
+        song: null
+      }
+    }
+  },
+  methods: {
+    addToDynamo: function() {
+
+      if(!this.genre) {
+        alert('Genre required.');
+      } else if(!this.artist) {
+        alert('Artist required.');
+      } else if(!this.album) {
+        alert('Album required.');
+      } else if(!this.song) {
+        alert('Song required.');
+      } else {
+        axios
+          .post('http://localhost:3000/uploadNewSong', {
+            genre: this.genre,
+            artist: this.artist,
+            album: this.album,
+            song: this.song
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
+      }
     }
   },
   mounted() {
