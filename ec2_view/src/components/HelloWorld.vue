@@ -10,16 +10,16 @@
             <input id="newGenre" v-model="newGenre" type="text" name="newGenre">
           </p>
           <p>
-            <label for="artist">Artist: </label>
-            <input id="artist" v-model="artist" type="text" name="artist">
+            <label for="newArtist">Artist: </label>
+            <input id="newArtist" v-model="newArtist" type="text" name="newArtist">
           </p>
           <p>
-            <label for="album">Album: </label>
-            <input id="album" v-model="album" type="text" name="album">
+            <label for="newAlbum">Album: </label>
+            <input id="newAlbum" v-model="newAlbum" type="text" name="newAlbum">
           </p>
           <p>
-            <label for="song">Song: </label>
-            <input id="song" v-model="song" type="text" name="song">
+            <label for="newSong">Song: </label>
+            <input id="newSong" v-model="newSong" type="text" name="newSong">
           </p>
           <p>
             <input type="submit" value="Submit">
@@ -55,9 +55,9 @@ export default {
     return {
       data: {
         newGenre: null,
-        artist: null,
-        album: null,
-        song: null
+        newArtist: null,
+        newAlbum: null,
+        newSong: null
       }
     }
   },
@@ -66,19 +66,20 @@ export default {
 
       if(!this.newGenre) {
         alert('Genre required.');
-      } else if(!this.artist) {
+      } else if(!this.newArtist) {
         alert('Artist required.');
-      } else if(!this.album) {
+      } else if(!this.newAlbum) {
         alert('Album required.');
-      } else if(!this.song) {
+      } else if(!this.newSong) {
         alert('Song required.');
       } else {
         axios
+          // .post('http://ec2-54-147-162-97.compute-1.amazonaws.com:3000/uploadNewSong', {
           .post('http://localhost:3000/uploadNewSong', {
             genre: this.newGenre,
-            artist: this.artist,
-            album: this.album,
-            song: this.song
+            artist: this.newArtist,
+            album: this.newAlbum,
+            song: this.newSong
           })
           .then(function (response) {
             console.log(response);
