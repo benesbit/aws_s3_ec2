@@ -6,8 +6,8 @@
           Upload new entry into DynamoDB
           <br>
           <p>
-            <label for="genre">Genre: </label>
-            <input id="genre" v-model="genre" type="text" name="genre">
+            <label for="newGenre">Genre: </label>
+            <input id="newGenre" v-model="newGenre" type="text" name="newGenre">
           </p>
           <p>
             <label for="artist">Artist: </label>
@@ -29,27 +29,32 @@
     </div>
     <div class="card">
       <div class="card-content">
+
+      </div>
+    </div>
+    <!-- <div class="card">
+      <div class="card-content">
         <div v-for="(albumSongs, artist) in this.data" v-bind:key="artist">
           <Artists :ArtistName="artist" :AlbumSongs="albumSongs"/>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import axios from "axios"
-import Artists from './Artists'
+// import Artists from './Artists'
 
 export default {
   name: 'HelloWorld',
-  components: {
-    Artists
-  },
+  // components: {
+  //   Artists
+  // },
   data() {
     return {
       data: {
-        genre: null,
+        newGenre: null,
         artist: null,
         album: null,
         song: null
@@ -59,7 +64,7 @@ export default {
   methods: {
     addToDynamo: function() {
 
-      if(!this.genre) {
+      if(!this.newGenre) {
         alert('Genre required.');
       } else if(!this.artist) {
         alert('Artist required.');
@@ -70,7 +75,7 @@ export default {
       } else {
         axios
           .post('http://localhost:3000/uploadNewSong', {
-            genre: this.genre,
+            genre: this.newGenre,
             artist: this.artist,
             album: this.album,
             song: this.song
