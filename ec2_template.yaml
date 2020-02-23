@@ -23,11 +23,18 @@ Resources:
           npm -y i;
           node index.js;
 
+  # MyInstanceProfile:
+  #   Type: "AWS::IAM::InstanceProfile"
+  #   Properties:
+  #     InstanceProfileName: s3access
+  #     Path: "/"
+  #     Roles:
+  #       - "s3access"
+  #       - "dynamodb_full_access"
   MyInstanceProfile:
     Type: "AWS::IAM::InstanceProfile"
     Properties:
-      InstanceProfileName: s3access
+      InstanceProfileName: dynamodb_full_access
       Path: "/"
       Roles:
-        - "s3access"
         - "dynamodb_full_access"
