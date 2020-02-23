@@ -21,7 +21,7 @@ Resources:
           git clone https://github.com/xDOASx/EC2_AWS_Express.git;
           cd EC2_AWS_Express;
           npm -y i;
-          node index.js;
+          node index.js &;
 
   # MyInstanceProfile:
   #   Type: "AWS::IAM::InstanceProfile"
