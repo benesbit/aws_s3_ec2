@@ -51,14 +51,12 @@ export default {
   // components: {
   //   Artists
   // },
-  data() {
+  data: function() {
     return {
-      data: {
-        newGenre: null,
-        newArtist: null,
-        newAlbum: null,
-        newSong: null
-      }
+      newGenre: null,
+      newArtist: null,
+      newAlbum: null,
+      newSong: null
     }
   },
   methods: {
@@ -94,10 +92,11 @@ export default {
     axios
       // .get('http://ec2-54-83-120-223.compute-1.amazonaws.com:3000/listEverything')
       // .get('http://localhost:3000/genres')
+      .get('http://ec2-54-147-162-97.compute-1.amazonaws.com:3000/genres')
       // .get('http://localhost:3000/artists/for/genre?genre=Game%20Music')
       // .get('http://localhost:3000/albums/for/artist?artist=Zelda')
       // .get('http://localhost:3000/songs/for/album?album=OoT')
-      .get('http://localhost:3000/song?song=Hyrule')
+      // .get('http://localhost:3000/song?song=Hyrule')
       .then(response => {
         console.log(response.data);
         this.data = response.data;
