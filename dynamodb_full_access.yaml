@@ -1,0 +1,34 @@
+Resources:
+  DynamoDBFullAccessRole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      RoleName: "dynamodb_full_access"
+      AssumeRolePolicyDocument: 
+        Statement: 
+          - 
+            Effect: "Allow"
+            Action: "sts:AssumeRole"
+            Principal: 
+              AWS: 
+                - "825930416745"
+              Service: 
+                - "dynamodb.amazonaws.com"
+            Action: 
+              - sts:AssumeRole
+            Condition: !Ref "AWS::NoValue"
+
+  DynamoDBFullPolicy:
+    Type: "AWS::IAM::Policy"
+    Properties:
+      PolicyDocument: 
+        Statement: 
+          - 
+            Effect: "Allow"
+            Action:
+              - "dynamodb:*"
+            Resource: 
+              - "arn:aws:dynamodb:*"
+
+      PolicyName: DYNAMODB_FULL_ACCESS
+      Roles:
+        - "dynamodb_full_access"
