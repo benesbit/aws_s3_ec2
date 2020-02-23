@@ -72,8 +72,8 @@ export default {
         alert('Song required.');
       } else {
         axios
-          // .post('http://ec2-54-147-162-97.compute-1.amazonaws.com:3000/uploadNewSong', {
-          .post('http://localhost:3000/uploadNewSong', {
+          .post('http://ec2-3-85-146-116.compute-1.amazonaws.com:3000/uploadNewSong', {
+          // .post('http://localhost:3000/uploadNewSong', {
             genre: this.newGenre,
             artist: this.newArtist,
             album: this.newAlbum,
@@ -92,7 +92,7 @@ export default {
     axios
       // .get('http://ec2-54-83-120-223.compute-1.amazonaws.com:3000/listEverything')
       .get('http://localhost:3000/genres')
-      // .get('http://ec2-54-147-162-97.compute-1.amazonaws.com:3000/genres')
+      // .get('http://ec2-3-85-146-116.compute-1.amazonaws.com:3000/genres')
       // .get('http://localhost:3000/artists/for/genre?genre=Game%20Music')
       // .get('http://localhost:3000/albums/for/artist?artist=Zelda')
       // .get('http://localhost:3000/songs/for/album?album=OoT')
