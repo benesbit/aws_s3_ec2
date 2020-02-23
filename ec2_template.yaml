@@ -12,8 +12,6 @@ Resources:
           yum -y update;
           yum -y upgrade;
           yum -y install git;
-          yum -y install awslogsd;
-          systemctl start awslogsd;
           cd ~;
           curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash;
           export NVM_DIR="$HOME/.nvm";
@@ -32,3 +30,4 @@ Resources:
       Path: "/"
       Roles:
         - "s3access"
+        - "dynamodb_full_access"
